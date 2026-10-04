@@ -322,6 +322,11 @@ input, select, textarea {
 
 .pagina { display: none; }
 .pagina.visible { display: block; max-width: 960px; margin: 0 auto; padding: 24px 16px 64px; }
+
+/* Al saltar a una sección con un enlace (#una-admision), dejamos espacio
+   arriba para que el menú pegajoso no tape el título. */
+section[id] { scroll-margin-top: 90px; }
+@media (max-width: 640px) { section[id] { scroll-margin-top: 190px; } }
 </style>
 </head>
 <body>
@@ -735,7 +740,7 @@ input, select, textarea {
       <p class="nota">
         ⚠️ <strong>Aviso importante:</strong> los resultados de esta página son
         <em>estimaciones educativas</em>. Los únicos datos oficiales son los que
-        publican la UCR y el TEC en sus sitios web.
+        publican la UCR, la UNA y el TEC en sus sitios web.
       </p>
     </section>
 
@@ -759,6 +764,37 @@ input, select, textarea {
         </ol>
       </article>
 
+      <!-- UNA: usa la misma PAA que la UCR, pero calcula su propia nota.
+           Fuente principal: Departamento de Registro de la UNA. -->
+      <article class="tarjeta">
+        <h3>UNA — 40% notas + 60% PAA</h3>
+        <p>
+          La UNA usa la <strong>misma PAA</strong> que la UCR (en el proceso 2026-2027 se aplica
+          el 3 y 4 de octubre, según el
+          <a href="https://www.registro.una.ac.cr/index.php/calendario-postulantes-de-primer-ingreso-admision-2026-2027" target="_blank" rel="noopener">calendario oficial de la UNA</a>),
+          pero calcula su <strong>propia</strong> nota. Según su Departamento de Registro
+          (<a href="https://www.registro.una.ac.cr/index.php/preguntas/admision" target="_blank" rel="noopener">registro.una.ac.cr</a>):
+        </p>
+        <ol>
+          <li><strong>40%:</strong> tu nota de Educación Diversificada.</li>
+          <li><strong>60%:</strong> la PAA. Ese 60% cambia si la carrera tiene prueba de aptitud
+              específica (Arte Escénico, Arte y Comunicación Visual, Enseñanza del Arte y
+              Comunicación Visual, Danza y Música).</li>
+          <li><strong>Estratificación:</strong> desde 2009 la UNA agrupa a las personas por tipo de
+              colegio, zona, modalidad y horario, y calcula la nota con la media y la desviación
+              de cada grupo
+              (<a href="https://www.registro.una.ac.cr/index.php/componentes-admision" target="_blank" rel="noopener">componentes de admisión</a>).
+              Por eso tu puntaje también es <em>relativo</em>.</li>
+        </ol>
+        <p>
+          Su escala llega hasta <strong>900 puntos</strong>
+          (<a href="https://www.lateja.cr/nacional/cuando-publicara-la-una-los-cortes-de-las-carreras/PHI62VOUKNAXBPV724OK5B3Z6Y/story/" target="_blank" rel="noopener">La Teja</a>)
+          y la nota mínima de admisión para el ingreso 2026 fue <strong>452,61</strong>
+          (<a href="https://www.unacomunica.una.ac.cr/index.php/febrero-2026/6631-mas-de-19-mil-estudiantes-iniciaron-lecciones-2026" target="_blank" rel="noopener">UNA Comunica</a>).
+          Por eso <strong>no compares un puntaje de la UNA con uno de la UCR</strong>: son escalas distintas.
+        </p>
+      </article>
+
       <article class="tarjeta">
         <h3>TEC — 60% examen + 40% notas</h3>
         <p>
@@ -780,6 +816,7 @@ input, select, textarea {
         <select id="filtro-universidad">
           <option value="todas">Todas</option>
           <option value="ucr">UCR</option>
+          <option value="una">UNA</option>
           <option value="tec">TEC</option>
         </select>
       </p>
@@ -812,6 +849,109 @@ input, select, textarea {
         El TEC no publica una lista comparable por carrera: define un corte institucional
         mínimo por proceso (520 puntos en procesos recientes, ver
         <a href="https://www.tec.ac.cr/examen-admision" target="_blank" rel="noopener">tec.ac.cr</a>).
+        La UNA publica sus cortes en un tablero oficial de su Departamento de Registro:
+        mirá <a href="#una-admision">la sección de la UNA</a> para saber cómo leerlos.
+      </p>
+    </section>
+
+    <!-- SECCIÓN UNA: cómo se reparten los cupos, cómo funciona la lista
+         de espera y cómo leer los cortes que publica la UNA.
+         ✅ = dato oficial con enlace a la fuente.
+         ⚠️ = lo que la UNA NO aclara (nuestra interpretación, marcada como tal). -->
+    <section id="una-admision">
+      <h2>UNA: lista de espera y cómo leer sus cortes</h2>
+      <p>
+        En la UNA, ganar el examen no asegura un campo: los cupos de cada carrera se
+        llenan en orden, del promedio más alto al más bajo. Si no alcanzaste, todavía
+        tenés dos oportunidades más: la <strong>lista de espera</strong> y la
+        <strong>segunda etapa</strong>.
+      </p>
+
+      <article class="tarjeta">
+        <h3>¿Cómo se reparten los cupos?</h3>
+        <!-- Lista ordenada: estas oportunidades SÍ ocurren en este orden -->
+        <ol>
+          <li><strong>Primera etapa:</strong> concursás con tus opciones de carrera. La UNA admite
+              en orden descendente de promedio hasta llenar los cupos
+              (<a href="https://www.preguntasfrecuentes.una.ac.cr/?epkb_post_type_1=cual-es-la-nota-de-corte-de-las-carreras" target="_blank" rel="noopener">UNA</a>).</li>
+          <li><strong>Lista de espera:</strong> si tu promedio no alcanzó, solo entrás si alguien
+              renuncia a su cupo y queda un espacio libre
+              (<a href="https://www.preguntasfrecuentes.una.ac.cr/?epkb_post_type_1=que-significa-que-la-carrera-de-mi-eleccion-esta-en-lista-de-espera" target="_blank" rel="noopener">UNA</a>).</li>
+          <li><strong>Segunda etapa:</strong> si tampoco entraste, elegís de nuevo entre las carreras
+              que todavía tengan cupo
+              (<a href="https://www.preguntasfrecuentes.una.ac.cr/?epkb_post_type_1=que-hago-si-no-soy-admitido-en-las-dos-opciones-de-carrera-que-solicite" target="_blank" rel="noopener">UNA</a>).</li>
+        </ol>
+      </article>
+
+      <article class="tarjeta">
+        <h3>Calendario de referencia: ingreso 2026</h3>
+        <p>
+          Así fue el último proceso, según la UNA
+          (<a href="https://crhoy.com/enterese/una-explica-el-paso-a-paso-del-proceso-de-admision-y-matricula-2026/" target="_blank" rel="noopener">publicado en CRHoy</a>):
+        </p>
+        <ol>
+          <li><strong>9 de enero:</strong> sale la lista de admitidos de la primera etapa.
+              Matrícula del 9 al 12 de enero.</li>
+          <li><strong>13 de enero:</strong> sale la lista de admitidos desde la lista de espera.
+              Matrícula del 13 al 15 de enero, antes del mediodía.</li>
+          <li><strong>15 de enero:</strong> inscripción a la segunda etapa (de 2:00 p. m. a 11:59 p. m.).</li>
+          <li><strong>16 de enero:</strong> sale la lista de admitidos de la segunda etapa.
+              Matrícula del 16 al 19 de enero.</li>
+        </ol>
+        <p class="nota">
+          ⚠️ En 2026 hubo <strong>una sola ronda</strong> de lista de espera. En
+          <a href="https://www.unacomunica.una.ac.cr/index.php/enero-2024/5079-admision-y-matricula-2024-estas-a-un-paso-de-entrar-a-la-una" target="_blank" rel="noopener">2024</a>
+          y <a href="https://www.telediario.cr/nacional/una-esto-debe-saber-sobre-matricula-y-admision-2025" target="_blank" rel="noopener">2025</a>
+          hubo tres. Los plazos para matricular duran pocos días: revisá cada lista el mismo
+          día que sale.
+        </p>
+        <p>
+          <strong>Ingreso 2027:</strong> los resultados del examen salen el
+          <strong>16 de noviembre de 2026</strong> a las 4:00 p. m. A inicios de octubre de 2026,
+          las fechas de las listas y de la matrícula todavía no estaban en el
+          <a href="https://www.registro.una.ac.cr/index.php/calendario-postulantes-de-primer-ingreso-admision-2026-2027" target="_blank" rel="noopener">calendario oficial</a>:
+          revisalo antes de enero.
+        </p>
+      </article>
+
+      <article class="tarjeta">
+        <h3>¿Qué significa el corte de la UNA?</h3>
+        <ul>
+          <li>✅ <strong>Qué es:</strong> la nota de la última persona que obtuvo cupo en esa carrera
+              (<a href="https://www.lateja.cr/nacional/cuando-publicara-la-una-los-cortes-de-las-carreras/PHI62VOUKNAXBPV724OK5B3Z6Y/story/" target="_blank" rel="noopener">La Teja</a>).
+              Cambia cada año según los cupos y quién se presenta.</li>
+          <li>✅ <strong>Dónde verlo:</strong> la UNA publica los cortes de años anteriores, por campus
+              y carrera, en un
+              <a href="https://www.registro.una.ac.cr/index.php/notas-de-corte-de-anos-anteriores" target="_blank" rel="noopener">tablero oficial de Registro</a>,
+              "solo como referencia". La UNA anunció que a finales de noviembre de 2026
+              publicará los cortes de procesos anteriores
+              (<a href="https://www.registro.una.ac.cr/index.php/preguntas/admision" target="_blank" rel="noopener">Registro UNA</a>).</li>
+          <li>✅ <strong>Qué año es:</strong> el tablero muestra la nota de corte de los estudiantes
+              que <em>ingresaron</em> en cada año. Un corte "2025" es de quienes entraron en
+              2025, o sea, de quienes hicieron el examen en 2024.</li>
+          <li>⚠️ <strong>¿Incluye la lista de espera?</strong> La UNA no lo aclara. Como el tablero
+              habla de quienes "ingresaron", lo más probable es que sí incluya a quienes
+              entraron por lista de espera, pero no está confirmado.</li>
+        </ul>
+        <p class="nota">
+          💡 <strong>Cómo usarlo:</strong> tomá el corte publicado como el mínimo real y apuntá
+          por encima. No cuentes con la lista de espera: depende de que otras personas
+          renuncien a su cupo, y eso no se puede predecir.
+        </p>
+      </article>
+
+      <p class="nota">
+        📈 <strong>Ojo con los cupos:</strong> para el ingreso 2026, la UNA aumentó los espacios
+        en Inteligencia y Estrategia Global (+96,88%) e Ingeniería en Sistemas de Información
+        (+18,69%) en los campus Omar Dengo y Benjamín Núñez
+        (<a href="https://www.unacomunica.una.ac.cr/index.php/febrero-2026/6631-mas-de-19-mil-estudiantes-iniciaron-lecciones-2026" target="_blank" rel="noopener">UNA Comunica</a>).
+        Con más cupos el corte suele bajar, así que los cortes anteriores a 2026 de esas
+        carreras podrían no reflejar la competencia actual.
+      </p>
+      <p class="nota">
+        📞 <strong>¿Querés confirmarlo?</strong> Preguntale al Departamento de Registro de la UNA
+        (<a href="mailto:registro@una.cr">registro@una.cr</a> o al 2562-6194) si el corte
+        publicado incluye a quienes entraron por lista de espera.
       </p>
     </section>
 
@@ -849,6 +989,8 @@ input, select, textarea {
         <li><a href="https://www.paa.iip.ucr.ac.cr/" target="_blank" rel="noopener">paa.iip.ucr.ac.cr</a> — estructura de la PAA y documento oficial de fórmula de calificación (UCR).</li>
         <li><a href="https://admision.ucr.ac.cr" target="_blank" rel="noopener">admision.ucr.ac.cr</a> — proceso de admisión y cortes oficiales de la UCR.</li>
         <li><a href="https://www.tec.ac.cr/examen-admision" target="_blank" rel="noopener">tec.ac.cr/examen-admision</a> — examen y componentes del puntaje de admisión del TEC.</li>
+        <li><a href="https://www.registro.una.ac.cr/index.php/preguntas/admision" target="_blank" rel="noopener">registro.una.ac.cr</a> — proceso de admisión, fechas y componentes de la nota de la UNA.</li>
+        <li><a href="https://www.registro.una.ac.cr/index.php/notas-de-corte-de-anos-anteriores" target="_blank" rel="noopener">Notas de corte de años anteriores (UNA)</a> — tablero oficial de cortes por campus y carrera.</li>
         <li><a href="https://www.admision.ac.cr" target="_blank" rel="noopener">admision.ac.cr</a> — Sistema de Admisión Universitaria (SAU) para inscribirse.</li>
       </ul>
     </section>
@@ -881,7 +1023,7 @@ input, select, textarea {
 
 </main>
 <footer class="pie">
-  <p>PractiCR — Proyecto educativo estudiantil. No es un sitio oficial de la UCR ni del TEC.</p>
+  <p>PractiCR — Proyecto educativo estudiantil. No es un sitio oficial de la UCR, de la UNA ni del TEC.</p>
 </footer>
 <script>
 /* ============================================================
@@ -3840,6 +3982,11 @@ document.getElementById("jugar-palabra").addEventListener("click", iniciarPalabr
 //   en https://consultasori.ucr.ac.cr/frmCortesHistoricosUniversitario.aspx).
 // El TEC publica un corte institucional minimo por proceso (por ejemplo,
 // 520 puntos en procesos recientes), no una lista por carrera comparable.
+// La UNA publica sus cortes en un tablero oficial (Power BI) que se abre desde
+// https://www.registro.una.ac.cr/index.php/notas-de-corte-de-anos-anteriores
+// Todavia no hay filas de la UNA: se agregan solo cuando se verifican en ese
+// tablero. Para agregarlas: universidad "UNA", sede = campus del tablero y
+// anio = año de INGRESO (asi lo rotula el tablero), con ese enlace como fuente.
 // Para agregar mas filas, copia el formato de cualquier linea.
 const DATOS_CORTES = [
   { universidad: "UCR", sede: "Rodrigo Facio (San Pedro)", carrera: "Artes Teatrales", corte: 468.25, anio: "2025", fuente: "https://ori.ucr.ac.cr/sites/default/files/2025-11/2025-cortes_ordinaria.pdf" },
@@ -4042,7 +4189,18 @@ function dibujarTabla() {
     return pasaUni && pasaAnio && pasaTexto;
   });
 
-  if (filas.length === 0) {
+  // ¿Hay al menos una fila de la UNA en los datos? (some = "¿alguna cumple?")
+  const hayFilasUna = DATOS_CORTES.some(function (fila) { return fila.universidad === "UNA"; });
+
+  if (filas.length === 0 && universidad === "una" && !hayFilasUna) {
+    // La UNA todavía no tiene filas verificadas: en vez de una tabla vacía,
+    // mandamos a la persona al tablero oficial y a la explicación de la página.
+    html += '<tr><td colspan="6" class="nota">📋 Los cortes de la UNA todavía no están en ' +
+      "esta tabla porque solo agregamos datos verificados. Consultalos en el " +
+      '<a href="https://www.registro.una.ac.cr/index.php/notas-de-corte-de-anos-anteriores" ' +
+      'target="_blank" rel="noopener">tablero oficial de la UNA</a> (elegí campus y carrera) ' +
+      'y leé <a href="#una-admision">cómo interpretarlos</a>.</td></tr>';
+  } else if (filas.length === 0) {
     html += '<tr><td colspan="6" class="nota">📋 Tabla en construcción: las notas de corte ' +
       "se agregan únicamente cuando están verificadas en la fuente oficial " +
       "(admision.ucr.ac.cr / tec.ac.cr).</td></tr>";
